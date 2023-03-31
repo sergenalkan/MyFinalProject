@@ -3,6 +3,7 @@ using Entities.Concrete;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 
 namespace DataAccess.Concrete.InMemory
@@ -34,7 +35,7 @@ namespace DataAccess.Concrete.InMemory
             //LINQ - Language Integrated Query (Dile gömülü sorgulama)
             //C# güçlendiren bir yapıdır
             //Lambda : => | SingleOrDefault: tek tek dolaşmaya yarar, bir tane arar (yerine First de kullanılabilir)
-            
+
             /* Eski Tip Kod
             Product productToDelete = null;
             foreach (var p in _products)
@@ -44,9 +45,14 @@ namespace DataAccess.Concrete.InMemory
                     productToDelete = p;
                 }
             }*/
-            Product productToDelete = _products.SingleOrDefault(p=>p.ProductId==product.ProductId);
-           
+            Product productToDelete = _products.SingleOrDefault(p => p.ProductId == product.ProductId);
+
             _products.Remove(productToDelete);
+        }
+
+        public Product Get(Expression<Func<Product, bool>> filter)
+        {
+            throw new NotImplementedException();
         }
 
         public List<Product> GetAll()
@@ -54,9 +60,14 @@ namespace DataAccess.Concrete.InMemory
             return _products;
         }
 
+        public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
+        {
+            throw new NotImplementedException();
+        }
+
         public List<Product> GetAllByCategory(int categoryId)
         {
-           return _products.Where(p => p.CategoryId == categoryId).ToList();
+            return _products.Where(p => p.CategoryId == categoryId).ToList();
         }
 
         public void Update(Product product)
