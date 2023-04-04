@@ -10,6 +10,8 @@ using System.Text;
 namespace DataAccess.Concrete.EntityFramework
 {
     //NuGet : hazır paketler
+    //Dataaccess üstüne sağ tık - Manage nuget - entityframeworkcore.sql-
+    //default olsun diye 3.1 seçtik ve install
     //EntityFramework da bir NuGet
     //8. Gün 01.25.10 entity framework kurulumu
     public class EfProductDal : IProductDal
