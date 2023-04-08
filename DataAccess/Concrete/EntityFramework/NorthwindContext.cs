@@ -8,7 +8,7 @@ namespace DataAccess.Concrete.EntityFramework
 {
     //Context : Db tabloları ile proje classlarını bağlama 
     //Db bağlama : 8. gün 01.40.00
-    public class NorthwindContext:DbContext
+    public class NorthwindContext : DbContext
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -17,6 +17,17 @@ namespace DataAccess.Concrete.EntityFramework
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Personel> Personels { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //FluentMapping
+            //modelBuilder.HasDefaultSchema("admin");
+            modelBuilder.Entity<Personel>().ToTable("Employees");
+            modelBuilder.Entity<Personel>().Property(p => p.Id).HasColumnName("EmployeeID");
+            modelBuilder.Entity<Personel>().Property(p => p.Name).HasColumnName("FirstName");
+            modelBuilder.Entity<Personel>().Property(p => p.Surname).HasColumnName("LastName");
+
+        }
     }
 
 }

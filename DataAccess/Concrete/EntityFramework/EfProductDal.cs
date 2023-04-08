@@ -20,7 +20,7 @@ namespace DataAccess.Concrete.EntityFramework
         {
             //IDispossable pattern implementation of c#
             //using araştır, bu kod işin bitince sil demek
-            using (NorthwindContext context=new NorthwindContext())
+            using (NorthwindContext context = new NorthwindContext())
             {
                 var addedEntity = context.Entry(entity);
                 addedEntity.State = EntityState.Added;
@@ -43,13 +43,14 @@ namespace DataAccess.Concrete.EntityFramework
             using (NorthwindContext context = new NorthwindContext())
             {
                 return context.Set<Product>().SingleOrDefault(filter);
-                    
+
             }
         }
 
         public List<Product> GetAll(Expression<Func<Product, bool>> filter = null)
         {
-            using(NorthwindContext context=new NorthwindContext())
+            //dispose: iş bitince bellekten  atmak için using kullanılır
+            using (NorthwindContext context = new NorthwindContext())
             {
                 return filter == null
                     ? context.Set<Product>().ToList()

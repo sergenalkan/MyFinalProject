@@ -3,9 +3,10 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DataAccess.Abstract
+namespace Business.Abstract
 {
-    public interface ICustomerDal : IEntityRepository<Customer>
+    public interface IPersonelService
     {
+        List<Personel> GetAll();
     }
 }
