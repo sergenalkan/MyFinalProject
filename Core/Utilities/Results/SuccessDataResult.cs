@@ -15,7 +15,7 @@ namespace Core.Utilities.Results
            
         }
         public SuccessDataResult(string message):base(default, true, message)
-        {
+        {//default, data demektir. Örneğin veri türü inttir ama ben bişey döndürmek istemiyorum
             
         }
         public SuccessDataResult():base(default,true)

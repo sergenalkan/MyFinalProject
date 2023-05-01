@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using DataAccess.Abstract;
+using Core.Utilities.Results;
 
 namespace Business.Concrete
 {
@@ -15,9 +16,9 @@ namespace Business.Concrete
             _personelDal = personelDal;
         }
 
-        public List<Personel> GetAll()
+        public IDataResult<List<Personel>> GetAll()
         {
-            return _personelDal.GetAll();
+            return new SuccessDataResult<List<Personel>>(_personelDal.GetAll());
         }
     }
 }

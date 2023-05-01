@@ -4,7 +4,8 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Business.Constants
-{
+{//static yaptık çünkü tek instance oluyor uygulama boyunca.
+    //diğer türlü sürekli newlemem gerekirdi
     public static class Messages
     {   //publicler büyük harfle başlar
         public static string ProductAdded = "Ürün eklendi";
