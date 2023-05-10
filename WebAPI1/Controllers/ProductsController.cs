@@ -26,12 +26,41 @@ namespace WebAPI1.Controllers
             _productService = productService;
         }
 
-        [HttpGet]
-        public List<Product> Get()
+        [HttpGet("getall")] // http get request gerçekleştiriyor
+        public IActionResult GetAll()
         {
+            //Swagger araştır
             //Dependency chain -- bağımlılık zinciri
             var result = _productService.GetAll();
-            return result.Data;
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpGet("getbyid")]
+        public IActionResult GetById(int id)
+        {
+            var result = _productService.GetById(id);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
+        }
+
+        [HttpPost("add")]
+        //get: getir, post ise gönder demek.
+        //güncelleme silme için put ve delete var ama gerçek hayatta da post kullanılıyor
+        public IActionResult Add(Product product) 
+        {
+            var result = _productService.Add(product);
+            if (result.Success)
+            {
+                return Ok(result);
+            }
+            return BadRequest(result);
         }
     }
 }
