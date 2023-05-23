@@ -16,9 +16,10 @@ namespace WebAPI1.Controllers
 
     public class ProductsController : ControllerBase
     {
-        //Loosely Coupled - gevşek bağımlılık (soyuta bağlılık)
-        //naminf convention
-        //IoC Container -- Inversion of Control
+        //Loosely Coupled - gevşek bağımlılık (soyuta bağlılık) - IProductService bağımlı
+        //naming convention - isimlendirme standardı - field için yaptık - field defaultu privatedir
+        //IoC Container -- Inversion of Control : bellekteki liste -
+        //new PM() new efPD() böyle referanslar olsun kim ihtiyaç duyarsa alsın kullansın
         IProductService _productService;
 
         public ProductsController(IProductService productService)
@@ -29,6 +30,7 @@ namespace WebAPI1.Controllers
         [HttpGet("getall")] // http get request gerçekleştiriyor
         public IActionResult GetAll()
         {
+            //object tüm veri tiplerinin atası
             //Swagger araştır
             //Dependency chain -- bağımlılık zinciri
             var result = _productService.GetAll();
@@ -51,7 +53,7 @@ namespace WebAPI1.Controllers
         }
 
         [HttpPost("add")]
-        //get: getir, post ise gönder demek.
+        //get: getir, post ise gönder demek. Body- raw- JSON
         //güncelleme silme için put ve delete var ama gerçek hayatta da post kullanılıyor
         public IActionResult Add(Product product) 
         {
