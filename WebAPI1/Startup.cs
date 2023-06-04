@@ -33,7 +33,7 @@ namespace WebAPI1
             //Autofac, Ninject, CastleWindsor, StructureMap, LightInject, DryInject --> IoC Container :
             //Bunlar .nette AddSingleton iþi yapýyor
             //AOP
-            //Postsharp
+            //Postsharp: Autofactan daha iyi ama ücretli. Autofac ücretsiz
             //[LogAspect]
             //[Validate]
             //[Cache]
