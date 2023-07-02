@@ -25,7 +25,8 @@ namespace Business.Concrete
             _productDal = productDal;
             _categoryService = categoryService;
         }
-
+        //Claim: iddaa etmek
+        //[SecuredOperation("product.add,admin")]
         [ValidationAspect(typeof(ProductValidator))]
         public IResult Add(Product product)
         {
