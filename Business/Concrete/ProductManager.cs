@@ -126,7 +126,7 @@ namespace Business.Concrete
             //Select count(*) from products where categoryId=1
             var result = _categoryService.GetAll();
 
-            if (result.Data.Count>15)
+            if (result.Data.Count>10)
             {
                 return new ErrorResult(Messages.CategoryLimitExceded);
             }
